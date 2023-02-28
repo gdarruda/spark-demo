@@ -9,16 +9,7 @@ import shutil
 NUM_CLASSES = 30
 BATCH_SIZE = 2_000_000
 NUM_CLIENTS = 60_000_000
-PATH = 'inline.parquet'
-
-def generate_inline_df(num_rows: int,
-                       num_classes: int) -> pd.DataFrame:
-    
-    return pd.DataFrame({
-        **{"id_client": [str(uuid.uuid4()) for _ in range(num_rows)]},
-        **{f"class_{c}": np.random.uniform(size=num_rows)
-           for c in range(num_classes)}
-    })
+PATH = '../resources/inline.parquet'
 
 class RandomData:
 

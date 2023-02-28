@@ -29,9 +29,8 @@ object App {
         .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
         .getOrCreate()
         
-    spark.sparkContext.setLogLevel("WARN")
 
-    val file = spark.read.parquet("inline.parquet")
+    val file = spark.read.parquet("../resources/inline.parquet")
     val num_rows = file.count()
     val num_groups = (num_rows / 10) + 1 
 
@@ -49,7 +48,7 @@ object App {
     messages_to_send
       .write
       .mode("overwrite")
-      .parquet("teste.parquet")
+      .parquet("../resources/output_scala.parquet")
 
     spark.stop()
   }

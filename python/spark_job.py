@@ -14,7 +14,7 @@ spark = (SparkSession
 
 spark.sparkContext.setLogLevel("WARN")
 
-file = spark.read.parquet('inline.parquet')
+file = spark.read.parquet('../resources/inline.parquet')
 num_rows = file.count()
 num_groups = (num_rows // 10) + 1
 
@@ -38,6 +38,6 @@ messages_to_send = (add_sequence_column(file, 'sequential_id')
 (messages_to_send
     .write
     .mode("overwrite")
-    .parquet("teste.parquet"))
+    .parquet("../resources/output_python.parquet"))
 
 spark.stop()
