@@ -4,7 +4,7 @@ import org.apache.spark.sql.types._
 
 object App {
 
-  def add_sequence_colunm(df: DataFrame, 
+  def add_sequence_column(df: DataFrame, 
                           col: String,
                           spark: SparkSession) : DataFrame = {
     
@@ -34,7 +34,7 @@ object App {
     val num_rows = file.count()
     val num_groups = (num_rows / 10) + 1 
 
-    val messages_to_send = add_sequence_colunm(file, "sequential_id", spark)
+    val messages_to_send = add_sequence_column(file, "sequential_id", spark)
       .withColumn("predict", 
                   struct(file
                           .schema
